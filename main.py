@@ -6,16 +6,16 @@ import sys
 
 def process_row(row):
     expression = row[2]
-    reading = row[4]
+    reading = row[3]
     gloss = row[7]
     pos = row[8]
 
-    # Primary context, prefs readings inline.
-    primary_context = row[13]
+    # Primary context, no furigana
+    primary_context = row[9]
 
-    # Secondary context, prefs readings inline.
-    secondary_context = row[19].strip()
-    tertiary_context = row[25].strip()
+    # Secondary context, no furigana
+    secondary_context = row[15].strip()
+    tertiary_context = row[21].strip()
     additional_contexts = []
     if secondary_context:
         additional_contexts.append(secondary_context)
