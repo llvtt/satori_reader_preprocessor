@@ -41,12 +41,6 @@ def process_row(row):
     )
 
 
-
-def process_rows(rows):
-    for row in rows:
-        yield process_row(row)
-
-
 def main(ifile, ofile):
     with open(ifile, 'r') as infile:
         reader = csv.reader(infile)
@@ -54,8 +48,7 @@ def main(ifile, ofile):
         next(reader)
 
         with open(ofile, 'w') as outfile:
-            writer = csv.writer(outfile)
-            writer.writerows(process_rows(reader))
+            csv.writer(outfile).writerows(process_row(row) for row in reader)
 
     print('Done')
 
